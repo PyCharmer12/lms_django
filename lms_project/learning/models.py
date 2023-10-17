@@ -39,9 +39,9 @@ class Lesson(models.Model):
 
 # Создание модели Tracking с нуля (урок 3).
 class Tracking(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Урок')
+    lesson = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Урок')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Ученик')
-    preview = models.BooleanField(default=None, verbose_name='Пройден?')
+    passed = models.BooleanField(default=None, verbose_name='Пройден?')
 
     # Перечисление свойств создаваемой модели таблицы Tracking.
     class Meta:
