@@ -36,6 +36,9 @@ class Lesson(models.Model):
         verbose_name = 'Урок'
         ordering = ['course']
 
+    def __str__(self):
+        return f'{self.course.title}: Урок {self.name}'
+
 
 # Создание модели Tracking с нуля (урок 3).
 class Tracking(models.Model):
