@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course, Lesson
+from .models import Course, Lesson, Tracking
 
 
 # Register your models here.
@@ -27,4 +27,12 @@ class LessonAdmin(admin.ModelAdmin):
     action_selection_counter = True
     pass
 
-
+@admin.register(Tracking)
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ('lesson', 'user', 'passed',)
+    search_fields = ('name',)
+    list_per_page = 3
+    actions_on_top = False
+    actions_on_bottom = True
+    action_selection_counter = True
+    pass

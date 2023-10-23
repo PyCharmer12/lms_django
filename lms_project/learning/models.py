@@ -48,8 +48,12 @@ class Tracking(models.Model):
 
     # Перечисление свойств создаваемой модели таблицы Tracking.
     class Meta:
+        verbose_name_plural = 'Дневники успеваемости'
+        verbose_name = 'Дневник успеваемости'
         ordering = ['-user']
 
+    def __str__(self):
+        return f'{self.lesson}: Дневник успеваемости {self.user}'
 
 
 
