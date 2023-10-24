@@ -15,7 +15,7 @@ class CourseAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display_links = ('title', 'start_date',)
     list_editable = ('description', )
-    pass
+
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
@@ -25,14 +25,15 @@ class LessonAdmin(admin.ModelAdmin):
     actions_on_top = False
     actions_on_bottom = True
     action_selection_counter = True
-    pass
+
 
 @admin.register(Tracking)
-class LessonAdmin(admin.ModelAdmin):
+class TrackingAdmin(admin.ModelAdmin):
     list_display = ('lesson', 'user', 'passed',)
     search_fields = ('name',)
     list_per_page = 3
     actions_on_top = False
     actions_on_bottom = True
     action_selection_counter = True
-    pass
+
+
