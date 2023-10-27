@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!--Загрузка дополнительных расширений-->
+{% load static %}
+<html long="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codeby - {% block title %}онлайн-курсы{% endblock %}</title>
+<!--  Подключим внешний файл стилей для иконок.-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.eom/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script defer src="https://cdnis.cloudflare.eom/ajax/libs/jquery/3.5.1/jquery.min.js"
+            inteqrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2ggflhSYNQrJ8RilYldYQlFxQYoCLtUjuuRuZo+fjqhx/qtq/1itJflC2e1DxltZVFq==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script defer src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <header>
+      <nav class="header_container">
+<!--  В блоке "logo_container" настройки для перехода на главную страницу сайта-->
+        <div class="logo_container">
+<!--  В теге <а> ссылка на главную страницу сайта     -->
+          <a class="logo" href="{% url 'index' %}">
+<!-- в атрибуте src тега img укажем путь до картинки  -->
+               <img src="{% static 'img/logo.png' %}" alt="Лого сайта" title="Лого сайта">
+          </a>
+                <div class="describer">
+                    <div class="title"><h2 translate="no">Codeby</h2></div>
+                    <div class="role">онлайн-курсы</div>
+                </div>
+        </div>
+        <div class="nav-toggle"><span></span></div>
+
+<!-- Содержимое сайта, если пользователь находится на сайте-->
+        <div class="auth_container">
+       <!-- Проверка - авторизовался ли пользователь?-->
+            {% if user.is_authenticated %}
+<!--             Если да, то отобразить ссылку на профиль с данными  пользователя:-->
+                <div class="profile">
+                    <div><a href="#">{{ user.last.name }} {{ user.first_name }}</a></div>
+                    <div class="submenu_profile" style="display: none;">
+                        <div>
+                            <p class="fa fa-sign-out"></p>
+                            <a style="color: rgba(238, 68, 68, 0.83)"
+                               href="{% url 'logout' %}">Выход
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div><a href="{% url 'create' %}">Создать Kypc</a></div>
+            {% else %}
+                 <div class="nav-toggle"><span></span></div>
+<!--            Если вход на сайт не выполнен, то показать страницу для авторизации-->
+                 <div class="login"><a href="{% url 'login' %}" style="color: #000">Bxoд</a></div>
+                 <div class="register"><a href="{% url 'register' %}" style="color: #fff">Регистрация</a></div>
+            {% endif %}
+        </div>
+
+      </nav>
+    </header>
+
+<!--    Разметка для отображения информации об авторах сайта -->
+    <footer>
+        <div class="footer_container">
+            <div class="logo">
+                <div class="copyright-mark">
+                    <p><img src="{% static 'logo.png' %}" alt="лого сайта" title="лого сайта">
+                    <span class="title">Codeby</span> - онлайн-курсы</p>
+                    <div>© {{ current_year }} Все права защищены</div>
+                </div>
+            </div>
+            <div class="privacy"><a href="#"> Политика конфиденциальности </a> </div>
+            <div class="terms"><a href="#">Условия использования</a></div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
