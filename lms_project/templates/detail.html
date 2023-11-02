@@ -20,5 +20,9 @@
                     <p>{{ lesson.name }}</p>
                     <p>{{ lesson.preview }}</p>
                 {% endfor %}
+            <form method="post" action="{% url 'enroll' course.pk %}">
+                {% csrf_token %}
+                <input type="submit" value="Записаться">
+            </form>
         </div>
     </div>
