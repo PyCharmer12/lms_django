@@ -7,7 +7,9 @@ from datetime import *
 def index(request):
     courses = Course.objects.all()
     current_year = datetime.now().year
-    return render(request, context={'courses': courses, 'current_year': current_year},
+    return render(request, context={'courses': courses,
+                                    'current_year': current_year
+                                    },
                   template_name='index.html')
 
 # Обработчик запроса создания курса :
@@ -27,7 +29,7 @@ def create(request):
 # Обработчик запроса удаления курса :
 def delete(request, course_id):
     Course.objects.get(id=course_id).delete()
-    return render('index')
+    return redirect('index')
 
 
 # Обработчик запроса вывода подробной информации о курсе:
